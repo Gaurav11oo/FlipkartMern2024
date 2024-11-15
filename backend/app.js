@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
 const errorMiddleware = require("./middlewares/error");
@@ -13,6 +14,8 @@ if (process.env.NODE_ENV !== "production") {
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
+app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 
